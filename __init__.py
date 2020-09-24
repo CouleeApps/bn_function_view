@@ -132,7 +132,7 @@ class FunctionEditDialog(QDialog):
                 if not label.text().endswith("*"):
                     label.setText(label.text() + "*")
 
-    def apply(self):
+    def apply(self, update=True):
         self.cancel_button.setDisabled(True)
         self.apply_button.setDisabled(True)
         self.ok_button.setDisabled(True)
@@ -163,10 +163,11 @@ class FunctionEditDialog(QDialog):
                 sleep(1)
                 execute_on_main_thread(finish)
 
-        UpdateTask(self).start()
+        if update:
+            UpdateTask(self).start()
 
     def ok(self):
-        self.apply()
+        self.apply(False)
         self.accept()
 
     def create_text_editor(self, attr, apply_fn):
