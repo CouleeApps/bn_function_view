@@ -439,10 +439,3 @@ def edit_function_type(bv: BinaryView, func: Function):
 
 
 PluginCommand.register_for_function("Edit Function Type...", "Edit function type...", edit_function_type)
-
-
-try:
-	import pydevd_pycharm
-	pydevd_pycharm.settrace('localhost', port=33333, stdoutToServer=True, stderrToServer=True, suspend=False)
-except:
-	pass
